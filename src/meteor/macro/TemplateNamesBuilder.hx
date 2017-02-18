@@ -1,4 +1,4 @@
-package meteor.tools;
+package meteor.macro;
 
 /**
  * @author Matthijs Kamstra aka [mck]
