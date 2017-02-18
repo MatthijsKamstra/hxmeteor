@@ -1,0 +1,6 @@
+-lib hxmeteor
+-cp src/shared
+-cp src/client
+-main Client
+-js www/client/client.js
+-dce full

@@ -1,0 +1,1 @@
+https://github.com/HaxeFlixel/flixel/blob/dev/flixel/system/macros/FlxAssetPaths.hx
