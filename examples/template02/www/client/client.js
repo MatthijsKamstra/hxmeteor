@@ -31,6 +31,7 @@ Client.main = function() {
 	templates_PageTwo.init();
 	new templates_Faq().init();
 	console.log("main");
+	console.log("admin_login");
 };
 var Shared = function() { };
 Shared.init = function() {

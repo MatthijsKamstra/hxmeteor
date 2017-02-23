@@ -51,3 +51,11 @@ Let NPM auto compile you code on changing `.hx` files
 cd path/to/folder
 npm install
 npm run watch
+```
+
+start Meteor
+
+```
+cd path/to/folder/www
+metero
+```

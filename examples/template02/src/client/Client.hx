@@ -8,5 +8,6 @@ class Client {
         new Faq().init();
 
         trace(TemplateNames.main);
+        trace(TemplateNames.admin_login);
     }
 }

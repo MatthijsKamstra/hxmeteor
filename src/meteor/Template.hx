@@ -5,7 +5,8 @@ import js.html.Element;
 import haxe.extern.Rest;
 
 /**
- * Template
+ * HTML files in Meteor define templates
+ *
  * @author TiagoLr
  */
 @:native('Template')

@@ -2,7 +2,7 @@
 
 Externs and tools to build [meteor](https://www.meteor.com/) applications using [Haxe](https://www.haxe.org) language.
 
-This is an early version and the externs are not complete, also some of the  workflows/concepts are subject to change.
+This is a version that is used in production but the externs might not be complete, also some of the workflows/concepts are subject to change.
 
 Currently up-to-date:
 
@@ -85,13 +85,55 @@ Route.route('/', function (ctx:RouterCtx) {
 });
 ```
 
-* **Templates List** showing available templates and type-check them using macros, something like [in this article](http://blog.stroep.nl/2014/01/haxe-macros/).
-
+* **Templates List** showing available templates and type-check them using macros, something like [in this article](http://blog.stroep.nl/2014/01/haxe-macros/). DONE!
 
 * **ES6 modules** output with [modular-js](https://github.com/kevinresol/modular-js)
 
 
-#haxelib local use
+# Template list
+
+With the help of macros you have access to the template names
+
+All you need to create / copy is a `TemplateNames.hx` file (in this repo `src/shared/TemplateNames.hx`):
+
+```haxe
+package;
+@:build(meteor.macro.TemplateNamesBuilder.build("www/client/templates/"))
+class TemplateNames{}
+```
+
+Where you change the path to the correct template folder, in this case
+
+`"www/client/templates/"`
+
+Type `TemplateNames.` and Visual Studio Code (or HaxeDevelop) will auto complete the template name.
+
+
+Every time the autocomplete is activated, this macro is executed.
+And it will check if the template file has a name
+
+```
+<template name="foobar">
+	...
+</template>
+```
+
+BIG advantage is:
+
+- "hidden" templates (when two templates are added in one file)
+- removing files will create an error if that file is used in your code
+- renaming templates will create an error
+- changing filenames will have no effect
+
+
+
+#Haxelib
+
+how to use
+
+```
+haxelib install hxmeteor
+```
 
 Besides using Haxelib, you can use this git repos as a development directory:
 
