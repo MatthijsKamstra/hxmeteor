@@ -6,8 +6,14 @@ class Server {
 
         Meteor.startup(function() {
             if (Shared.players.find().count() == 0) {
-                var names = ["Ada Lovelace", "Grace Hopper", "Marie Curie",
-                             "Carl Friedrich Gauss", "Nikola Tesla", "Claude Shannon"];
+                var names = [
+                    "Ada Lovelace",
+                    "Grace Hopper",
+                    "Marie Curie",
+                    "Carl Friedrich Gauss",
+                    "Nikola Tesla",
+                    "Claude Shannon"
+                ];
 
                 for (name in names) {
                     Shared.players.insert({

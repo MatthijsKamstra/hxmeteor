@@ -1,0 +1,9 @@
+-resource tools/templates/classname.mtt@classname-template
+-resource tools/templates/build_extra.mtt@buildextra-template
+-resource tools/templates/task.mtt@task-template
+-resource tools/templates/package.mtt@package-template
+
+-main Run
+-cp tools
+-neko run.n
+-debug

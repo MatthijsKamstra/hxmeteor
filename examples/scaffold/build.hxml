@@ -1,0 +1,22 @@
+-lib hxmeteor
+-cp src/shared
+
+-resource src/assets/test.mtt@test-template
+
+--each
+
+-cp src/client
+-main Client
+-js www/client/client.js
+-dce full
+-debug
+
+--next
+
+-cp src/server
+-main Server
+-js www/server/server.js
+-dce full
+-debug
+
+-cmd echo '-------------------\nHaxe debug-build finished \n-------------------'

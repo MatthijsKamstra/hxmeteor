@@ -1,0 +1,7 @@
+{
+	"haxe.displayConfigurations": [
+		[
+			"build_vscode.hxml"
+		]
+	]
+}

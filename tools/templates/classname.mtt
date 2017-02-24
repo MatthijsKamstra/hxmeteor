@@ -1,0 +1,31 @@
+package ::packageName::;
+
+import meteor.Template;
+
+class ::className:: {
+
+	public static function init() {
+
+		var _template = Template.get("::templateName::");
+
+		_template.onCreated(function onCreated() {
+
+		});
+
+		_template.helpers({
+			test:function (){
+				return '**::className::**';
+			}
+		});
+
+		_template.events({
+			'click .testBtn':function (event){
+
+				// Prevent default browser form submit
+				event.preventDefault();
+
+				trace("click '::className::'");
+			}
+		});
+	}
+}
