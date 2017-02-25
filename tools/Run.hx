@@ -45,20 +45,28 @@ class Run {
 		// if(args.indexOf('-source') != -1) 	sourceFolder = args[args.indexOf('-source')+1];
 		// if(args.indexOf('-export') != -1) 	exportFolder = args[args.indexOf('-export')+1];
 
-		// meteor project
-		neko.Lib.println('- create meteor project in www');
-		var p = new sys.io.Process("meteor", ["create",'--bare','${root}/www/']);
 
-		// read everything from stderr
-		var error = p.stderr.readAll().toString();
-		neko.Lib.println("stderr:\n" + error);
+		if (!FileSystem.exists('${root}/www/.meteor'))
+		{
+			// meteor project
+			neko.Lib.println('- create meteor project in www');
 
-		// read everything from stdout
-		var stdout = p.stdout.readAll().toString();
-		neko.Lib.println("stdout:\n" + stdout);
+			var p = new sys.io.Process("meteor", ["create",'--bare','${root}/www/']);
 
-		// close the process I/O
-		p.close();
+			// read everything from stderr
+			var error = p.stderr.readAll().toString();
+			neko.Lib.println("stderr:\n" + error);
+
+			// read everything from stdout
+			var stdout = p.stdout.readAll().toString();
+			neko.Lib.println("stdout:\n" + stdout);
+
+			// close the process I/O
+			p.close();
+		} else {
+			neko.Lib.println('- already meteor project in www');
+		}
+
 
 
 
@@ -73,25 +81,45 @@ class Run {
 		neko.Lib.println('- VSCode stuff');
 		File.saveContent(root+'/.vscode/settings.json','{\n\t"haxe.displayConfigurations": [\n\t\t[\n\t\t\t"build_vscode.hxml"\n\t\t]\n\t]\n}');
 		File.saveContent(root+'/.vscode/tasks.json', haxe.Resource.getString("task-template"));
+
+		neko.Lib.println('- NPM install stuff');
 		File.saveContent(root+'/package.json', haxe.Resource.getString("package-template"));
+		// use command line
+
+		// [mck] something weird going on...
+
+		// new sys.io.Process("cd", ['${root}/']);
+		// var p = new sys.io.Process("ls", []);
+
+		// var p = new sys.io.Process("npm", ["install"]);
+
+		// // read everything from stderr
+		// var error = p.stderr.readAll().toString();
+		// neko.Lib.println("stderr:\n" + error);
+
+		// // read everything from stdout
+		// var stdout = p.stdout.readAll().toString();
+		// neko.Lib.println("stdout:\n" + stdout);
+		// p.close();
 
 		// build files
-		neko.Lib.println('- hxml stuff');
+		neko.Lib.println('- haxe build (hxml)');
 		File.saveContent(root+'/build.hxml', createHxml('debug'));
 		File.saveContent(root+'/build_release.hxml',createHxml('release'));
 		File.saveContent(root+'/build_vscode.hxml','# build file used for VSCode.\n-lib hxmeteor\n-cp src/shared\n-cp src/client\n-main Client\n-js www/client/client.js\n-dce full\n-debug');
 
 		// misc
-		neko.Lib.println('- misc stuff');
+		neko.Lib.println('- readme and todo');
 		File.saveContent(root+'/README.MD','#README\n\n
 
 Automated build with terminal (after you installed NPM)
 
 ```
+npm install
 npm run watch
 ```
 
-To run your new app:
+To run your new meteor app:
 
 ```
 cd www

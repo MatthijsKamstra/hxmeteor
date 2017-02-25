@@ -5,6 +5,13 @@
 
 --each
 
+# create a template in `src/client/templates/*`
+# and this macro will create a html template in
+# `www/client/templates/*`
+
+--macro meteor.macro.AutomaticTemplate.build()
+
+
 -cp src/client
 -main Client
 -js www/client/client.js
