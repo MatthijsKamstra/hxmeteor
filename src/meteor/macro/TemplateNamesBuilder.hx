@@ -109,7 +109,7 @@ class TemplateRef
 		this.name = templateName.split("-").join("_").split(".").join("__");
 
 		// generate documentation
-		this.documentation = "Reference to template \"" + templateName + "\" from file on disk \"" + fileName + "\". (auto generated)";
+		this.documentation = "Ref. to \"" + templateName + "\" template from file \"" + fileName + "\". (auto generated)";
 	}
 }
 #end
