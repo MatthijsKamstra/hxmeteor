@@ -229,6 +229,18 @@ In our case it will generate in folder `www/client/templates/*`
 </template>
 ```
 
+BIG advantage is:
+
+- you know you have to make a template, that is done for you
+- file name of the html is related to the Haxe file (Foobar.hx -> foobar.html)
+- template name is based upon Haxe file ((Foobar.hx -> `<template name="foobar">`))
+- folderstructure is "visible" in template name (`templates/admin/Login.hx` -> -> `<template name="admin_login">`)
+- renaming class will automaticly generate a new `.html` template (don't forget to update)
+- changing package will automaticly generate a new `.html` template (don't forget to update)
+- in combination with previous macro, make your life a little easier
+- add more sanity to the template html and js (don't worry you still can fuck everything up!)
+
+
 #TODOS
 Some ideas for macros and utilities that may improve the haxe-meteor workflow in the future:
 
