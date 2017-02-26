@@ -37,7 +37,7 @@ class AutomaticTemplate {
 
 				// [mck] make sure folders are included in the template name "admin/test.html" becomes "admin_test"
 				if(folder.split('templates/')[1] != null){
-					cleanFileName = folder.split('templates/')[1] + '_' + cleanFileName;
+					cleanFileName = folder.split('templates/')[1].replace('/','_') + '_' + cleanFileName;
 				}
 
 				var html = '<!--
@@ -60,6 +60,7 @@ Once generated it will not be overwritten.
 					File.saveContent(templateFile, html);
 				}
 			} else {
+				FileSystem.createDirectory(folder.replace('src','www') + '/' + fileName + '/');
 				generateFromFolder(folder + '/' + fileName);
 			}
 		}
