@@ -9,6 +9,7 @@ typedef CreateUserOptions = {
 	?email:String,
 	password:String, // required on the client
 	?profile:{},
+	?roles:Array<String> // requires `Roles` package.
 }
 
 typedef EmailFields = {

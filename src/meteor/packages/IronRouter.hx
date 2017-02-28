@@ -70,6 +70,10 @@ extern class RouterInstance {
 	public var route:RouterInfo;
 }
 
+/**
+ *  Meteor `this` keyword has a different context and properties,
+ *  to mimic these namespaces in a typed manner context objects are created
+ */
 @:native('this')
 extern class RouterCtx {
 	static function extend(?opts: RouteOptions):Dynamic;

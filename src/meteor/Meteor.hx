@@ -30,7 +30,7 @@ typedef User = {
 	createdAt:Date,
 	profile: Dynamic,
 	services: Dynamic,
-	?roles: {}, 	// requires `Roles` package.
+	?roles: Array<String>, 	// requires `Roles` package.
 }
 
 typedef ExternalLoginOpts = {
@@ -90,7 +90,10 @@ extern class Meteor {
 	static function loginWithMeetup(opts:ExternalLoginOpts, callback:EitherType<Void->Void, Error->Void>):Void;
 
 }
-
+/**
+ *  Meteor `this` keyword has a different context and properties,
+ *  to mimic these namespaces in a typed manner context objects are created
+ */
 @:native('this')
 extern class PublishCtx {
 	static var userId(default, null):String;
@@ -104,6 +107,10 @@ extern class PublishCtx {
 	static function stop():Void;
 }
 
+/**
+ *  Meteor `this` keyword has a different context and properties,
+ *  to mimic these namespaces in a typed manner context objects are created
+ */
 @:native('this')
 extern class MethodCtx {
 	static var userId(default, null):String;

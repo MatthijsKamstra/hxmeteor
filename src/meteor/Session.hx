@@ -1,7 +1,8 @@
 package meteor;
 
 /**
- * Session
+ * Session provides a global object on the client that you can use to store an arbitrary set of key-value pairs. Use it to store things like the currently selected item in a list.
+ *
  * @author TiagoLr
  */
 @:native('Session')

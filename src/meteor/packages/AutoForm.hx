@@ -34,17 +34,21 @@ extern class AutoForm {
 	static function templateInstanceForForm(id:String):Template;
 	static function getFormValues(formId:String, ?template:Template, ?ss:SimpleSchema, ?getModifier:Bool):Dynamic;
 	static function getFieldValue(fieldName:String, ?formId:String):Dynamic;
-	
+
 	// TODO create externs for whole api: https://github.com/aldeed/meteor-autoform/blob/master/api.md
 }
 
+/**
+ *  Meteor `this` keyword has a different context and properties,
+ *  to mimic these namespaces in a typed manner context objects are created
+ */
 @:native('this')
 extern class HookCtx {
 	static function addStickyValidationError(key:String, type:Dynamic, value:Dynamic):Void;
 	static function removeStickyValidation(key:String):Void;
 	static function resetForm():Void;
 	static function done(?error:Error, ?success:Dynamic):Void;
-	
+
 	static var autoSaveChangedElement:Dynamic;
 	static var collection:Collection;
 	static var currentDoc:Dynamic;
