@@ -1,12 +1,12 @@
-package templates.admin;
+package templates;
 
 import meteor.Template;
 
-class Login {
+class Home {
 
 	public static function init() {
 
-		var _template = Template.get(TemplateNames.admin_login);
+		var _template = Template.get(TemplateNames.home);
 
 		_template.onCreated(function onCreated() {
 
@@ -14,7 +14,7 @@ class Login {
 
 		_template.helpers({
 			test:function (){
-				return '**Login**';
+				return '**Home**';
 			}
 		});
 
@@ -24,7 +24,7 @@ class Login {
 				// Prevent default browser form submit
 				event.preventDefault();
 
-				trace("click 'Login'");
+				trace("click 'Home'");
 			}
 		});
 	}

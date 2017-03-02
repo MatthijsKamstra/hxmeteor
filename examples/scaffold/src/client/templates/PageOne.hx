@@ -6,7 +6,7 @@ class PageOne {
 
 	public static function init() {
 
-		var _template = Template.get("pageone");
+		var _template = Template.get(TemplateNames.pageone);
 
 		_template.onCreated(function onCreated() {
 

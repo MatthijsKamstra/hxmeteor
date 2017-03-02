@@ -16,6 +16,7 @@ AppRouter.init = function() {
 var Client = function() { };
 Client.main = function() {
 	Shared.init();
+	templates_Home.init();
 	templates_PageTwo.init();
 	templates_PageOne.init();
 	templates_admin_Login.init();
@@ -24,6 +25,20 @@ Client.main = function() {
 var Shared = function() { };
 Shared.init = function() {
 	AppRouter.init();
+};
+var templates_Home = function() { };
+templates_Home.init = function() {
+	var _template = Template["home"];
+	var onCreated = function() {
+	};
+	_template.onCreated(onCreated);
+	_template.helpers({ test : function() {
+		return "**Home**";
+	}});
+	_template.events({ "click .testBtn" : function(event) {
+		event.preventDefault();
+		console.log("click 'Home'");
+	}});
 };
 var templates_PageOne = function() { };
 templates_PageOne.init = function() {
@@ -55,7 +70,7 @@ templates_PageTwo.init = function() {
 };
 var templates_admin_Login = function() { };
 templates_admin_Login.init = function() {
-	var _template = Template["login"];
+	var _template = Template["admin_login"];
 	var onCreated = function() {
 	};
 	_template.onCreated(onCreated);
