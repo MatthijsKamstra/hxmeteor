@@ -34,6 +34,9 @@ class Run {
 			'/src/shared/utils/',
 			'/src/shared/model/constants/',
 			'/www/client/templates/admin/',
+			'/www/client/lib/css/',
+			'/www/client/lib/js/',
+			'/www/client/styles/',
 			'/www/public/fonts/',
 			'/www/public/img/',
 			'/www/server/'
@@ -67,7 +70,11 @@ class Run {
 			neko.Lib.println('- already meteor project in www');
 		}
 
-
+		// neko.Lib.println('- add meteor packages');
+		// tProcess( new sys.io.Process('cd ${root}/www/', []), 'cd');
+		// tProcess( new sys.io.Process('echo', ['hello']), 'echo');
+		// tProcess( new sys.io.Process('ls', []), 'ls');
+		// tProcess (new sys.io.Process('meteor', ['${root}/www/','add','iron:router']));
 
 
 		// build all folders
@@ -128,11 +135,46 @@ meteor
 ```
 
 ');
-		File.saveContent(root+'/TODO.MD','#TODO\n\n');
+		File.saveContent(root+'/TODO.MD','#TODO\n\n
+
+```
+meteor add iron:router
+```
+
+');
 
 		// templates
 		neko.Lib.println('- templates stuff');
 		File.saveContent(root+'/src/assets/test.mtt','<b>::test::</b>');
+		File.saveContent(root+'/www/client/styles/main.css','/* http://www.w3schools.com/howto/howto_css_loader.asp */
+/* Center the loader */
+#loader {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 1;
+	width: 150px;
+	height: 150px;
+	margin: -75px 0 0 -75px;
+	border: 4px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 4px solid #1ABC9C;
+	width: 120px;
+	height: 120px;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+');
 
 		// files
 		neko.Lib.println('- hx files stuff');
@@ -142,6 +184,7 @@ class Client {
     static function main() {
         Shared.init();
 
+		Home.init();
 		PageTwo.init();
 		PageOne.init();
 		templates.admin.Login.init();
@@ -205,15 +248,93 @@ class Tasks {
 @:build(meteor.macro.TemplateNamesBuilder.build("www/client/templates/"))
 class TemplateNames{}');
 
+		File.saveContent(root+'/www/client/templates/head.html','<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>hxmeteor</title>
 
-		File.saveContent(root+'/www/client/templates/main.html','<template name="main">test</template>');
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- https://fonts.google.com/?selection.family=Merriweather:300,400|Roboto&query=roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400|Roboto" rel="stylesheet">
 
 
+	<!-- CSS IS AUTOMATICALLY BUILT AND LOADED -->
+</head>
+');
+
+		File.saveContent(root+'/www/client/templates/navbar.html','<template name="navbar">
+	<nav class="navbar navbar-default navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+      			<a class="navbar-brand" href="http://getbootstrap.com/components/#navbar" target="_blank">
+        			http://getbootstrap.com/components/#navbar
+				</a>
+	    	</div>
+		</div>
+	</nav>
+</template>');
+
+		File.saveContent(root+'/www/client/templates/body.html','<body>
+	{{> navbar}}
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.3/jquery-confirm.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.3/jquery-confirm.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>');
+
+		File.saveContent(root+'/www/client/templates/main.html','<template name="main">
+	<!-- main -->
+	<div class="container">
+		{{> yield}}
+	</div>
+</template>
+
+
+<template name="loading">
+	<div id="loader"></div>
+</template>
+');
+
+
+		createTemplate('/src/client/templates/','Home');
 		createTemplate('/src/client/templates/','PageOne');
 		createTemplate('/src/client/templates/','PageTwo');
 		createTemplate('/src/client/templates/admin/','Login');
 
 
+		neko.Lib.println('
+
+--------------------
+
+Haxe Meteor scaffold project is done.
+
+Start project:
+
+  haxe build.hxml
+  cd www
+  meteor add iron:router
+  meteor
+
+Or autobuild with NPM
+
+  npm run watch
+
+--------------------
+
+
+');
 
 
 	}
@@ -221,9 +342,10 @@ class TemplateNames{}');
 	function createTemplate(path:String,className:String):Void {
 		neko.Lib.println('    * create "$className".hx');
 		var temp = path.split('/templates/')[1].replace("/","");
+		var temp2 = path.split('/templates/')[1].replace("/","_");
 		var packageName = 'templates';
 		if(temp.length != 0) packageName += '.$temp';
-		var templateName = className.toLowerCase();
+		var templateName = (temp2 + className).toLowerCase();
 		var str = haxe.Resource.getString("classname-template");
 		var template = new haxe.Template(str);
 		var obj = {
@@ -248,7 +370,22 @@ class TemplateNames{}');
 		return output;
 	}
 
+	function tProcess(p:sys.io.Process, ?name:String = '')
+	{
+		// meteor project
+		neko.Lib.println('- start new cmd: "$name"');
 
+		// read everything from stderr
+		var error = p.stderr.readAll().toString();
+		neko.Lib.println('\t$name : stderr:\n' + error);
+
+		// read everything from stdout
+		var stdout = p.stdout.readAll().toString();
+		neko.Lib.println('\t$name : stdout:\n' + stdout);
+
+		// close the process I/O
+		p.close();
+	}
 
 	function showHelp(){
 		Sys.println('[fixme]');

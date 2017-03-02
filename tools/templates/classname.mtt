@@ -6,7 +6,7 @@ class ::className:: {
 
 	public static function init() {
 
-		var _template = Template.get("::templateName::");
+		var _template = Template.get(TemplateNames.::templateName::);
 
 		_template.onCreated(function onCreated() {
 
