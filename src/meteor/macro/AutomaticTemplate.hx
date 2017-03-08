@@ -32,6 +32,9 @@ class AutomaticTemplate {
 		{
 			if (!FileSystem.isDirectory(folder + '/' + fileName))
 			{
+				// ignore invisible (OSX) files like ".DS_Store"
+				if (fileName.startsWith(".")) continue;
+
 				var cleanFileName = fileName.toLowerCase().split('.')[0];
 				var templateFile = folder.replace('src','www') + '/' + cleanFileName + '.html';
 				var tempTemplateFile = folder.replace('src','www') + '/$prefix' + cleanFileName + '.html';
