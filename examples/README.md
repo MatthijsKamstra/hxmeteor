@@ -6,7 +6,11 @@ This folder contains a couple (default) Meteor examples and the tutorial you fin
 - [clock](clock)
 - [leaderboard](leaderboard)
 - [template](template) IronRouter, Bootstrap, models, the whole shebang
+- [template02](template02) Same as [template](template), but with VSCode folder / automatic build with NPM and `TemplateNames` macro
 - [router](router) IronRouter example with Bootstrap for styling and Haxe autocompile via NPM [onchange](https://www.npmjs.com/package/onchange)
+- [scaffold](scaffold) use `haxelib run hxmeteor` to create a Haxe/Meteor scaffold project
+- [roles](roles) use roles in your project
+- [haxe_it](haxe_it) Use all nice Haxe features
 
 
 The following examples are from [this](https://www.meteor.com/tutorials/blaze/creating-an-app) Meteor tutorial.
@@ -35,7 +39,7 @@ Template.myTemplate.helpers = {
 }
 
 Router.route('/', function () {
-  this.render('MyTemplate');
+	this.render('MyTemplate');
 });
 ```
 
@@ -65,9 +69,9 @@ Template.body.events({
 
 ```haxe
 Template.get('body').events({
-  'submit .new-task': function (event) {
-    ...
-  }
+	'submit .new-task': function (event) {
+    	...
+	}
 });
 
 ```
@@ -76,7 +80,7 @@ Generate variables on the flight is a big no-no in Haxe
 
 ```javascript
 Template.body.onCreated(function bodyOnCreated() {
-  this.state = new ReactiveDict();
+	this.state = new ReactiveDict();
 });
 ```
 
