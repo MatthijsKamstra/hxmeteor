@@ -1,0 +1,29 @@
+-lib hxmeteor
+-cp src/shared
+
+-resource src/assets/test.mtt@test-template
+
+--each
+
+# create a template in `src/client/templates/*`
+# and this macro will create a html template in
+# `www/client/templates/*`
+
+--macro meteor.macro.AutomaticTemplate.build()
+
+
+-cp src/client
+-main Client
+-js www/client/client.js
+-dce full
+# -debug
+
+--next
+
+-cp src/server
+-main Server
+-js www/server/server.js
+-dce full
+# -debug
+
+-cmd echo '-------------------\nHaxe release-build finished \n-------------------'
