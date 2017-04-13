@@ -19,12 +19,21 @@ Client.main = function() {
 	templates_Home.init();
 	templates_PageTwo.init();
 	templates_PageOne.init();
+	new templates_ComponentTest().init();
 	templates_admin_Login.init();
 	console.log("main");
 };
 var Shared = function() { };
 Shared.init = function() {
 	AppRouter.init();
+};
+var meteor_IMeteorComponent = function() { };
+var templates_ComponentTest = function() {
+};
+templates_ComponentTest.__interfaces__ = [meteor_IMeteorComponent];
+templates_ComponentTest.prototype = {
+	init: function() {
+	}
 };
 var templates_Home = function() { };
 templates_Home.init = function() {

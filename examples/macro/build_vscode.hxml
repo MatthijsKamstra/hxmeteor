@@ -1,0 +1,8 @@
+# build file used for VSCode.
+-lib hxmeteor
+-cp src/shared
+-cp src/client
+-main Client
+-js www/client/client.js
+-dce full
+-debug
