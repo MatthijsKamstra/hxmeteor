@@ -56,12 +56,13 @@ It\'s the template for "${"src" + folder.split('src')[1] + "/" + fileName}"
 -->
 
 <template name="$cleanFileName">
+	<!-- Start template: $cleanFileName -->
 	<div class="container">
 		<h1>${cleanFileName.toUpperCase()}</h1>
 		<p>template for $fileName</p>
 		<p>test: {{test}}</p>
 		<button class="testBtn">click</button>
-	</div>
+	</div><!-- /.container -->
 </template>
 
 ';
