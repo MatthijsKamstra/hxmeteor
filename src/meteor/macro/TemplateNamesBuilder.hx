@@ -62,7 +62,6 @@ class TemplateNamesBuilder
 		{
 			if (!FileSystem.isDirectory(directory + fileName))
 			{
-
 				var content = File.getContent (directory + fileName);
 				var ereg:EReg = ~/<template\s+name\s*=\s*['"](\w*)['"]\s*>/;
 				while (ereg.match(content)) {
