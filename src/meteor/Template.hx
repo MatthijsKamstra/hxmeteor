@@ -1,8 +1,11 @@
 package meteor;
+
+import haxe.extern.Rest;
 import haxe.Constraints.Function;
 import haxe.ds.Either;
+
 import js.html.Element;
-import haxe.extern.Rest;
+import js.html.Event;
 
 /**
  * HTML files in Meteor define templates
@@ -22,6 +25,7 @@ extern class Template {
 	// http://blazejs.org/api/templates.html#Event-Maps
 	@:overload(function(eventMap: Dynamic<Void->Void> ):Void { } )
 	@:overload(function(eventMap: Dynamic<Dynamic> ):Void { } )
+	@:overload(function(eventMap: Dynamic<Event->Void> ):Void { } )
 	function events(eventMap: Dynamic<Dynamic->Void> ):Void;
 	function helpers(helpers: { } ):Void;
 
