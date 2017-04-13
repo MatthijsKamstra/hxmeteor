@@ -117,7 +117,7 @@ class Run {
 
 		// misc
 		neko.Lib.println('- readme and todo');
-		File.saveContent(root+'/README.MD','#README\n\n
+		File.saveContent(root+'/README.MD','# README\n\n
 
 Automated build with terminal (after you installed NPM)
 
