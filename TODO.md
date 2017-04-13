@@ -1,3 +1,17 @@
+
+# template
+
+https://github.com/skial/fe
+https://github.com/MarcWeber/haxe-macro-html-templates
+https://github.com/benmerckx/ithril
+https://github.com/fponticelli/doom
+https://github.com/skial/fe
+https://github.com/MarcWeber/haxe-html
+
+
+
+
+
 ```
 Meteor server restarted
 => Errors prevented startup:

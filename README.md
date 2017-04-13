@@ -2,15 +2,15 @@
 
 Externs and tools to build [meteor](https://www.meteor.com/) applications using [Haxe](https://www.haxe.org) language.
 
-This is a version that is used in production but the externs might not be complete, also some of the workflows/concepts are subject to change.
+Current version is used in production but the externs might not be complete, also some of the workflows/concepts are subject to change.
 
 Currently up-to-date:
 
 - Meteor 1.4.3.1
-- Haxe 3.4.0
+- Haxe 3.4.2
 
 
-##How it works
+## How it works
 Meteor.js has a very specific workflow designed for javascript language, some of its features are slightly modified or workaround when using Haxe.
 
 Check out the [example](/examples) folder
@@ -68,19 +68,19 @@ untyped js.Browser.window["Players"] = untyped collection._collection;
 
 How to install Haxe Meteor externs for javascript
 
-```
+```bash
 haxelib install hxmeteor
 ```
 
 Besides using Haxelib, you can use this git repos as a development directory:
 
-```
+```bash
 haxelib dev hxmeteor path/to/folder
 ```
 
 or use git directly
 
-```
+```bash
 haxelib git hxmeteor https://github.com/MatthijsKamstra/hxmeteor.git
 ```
 
@@ -98,7 +98,7 @@ You need to have meteor installed for this to work!
 
 Type in you terminal:
 
-```
+```bash
 haxelib run hxmeteor
 ```
 
@@ -180,7 +180,7 @@ With the help of macros we generate templates based on Haxe Classes.
 
 Lets create a Haxe class in the folder `src/client/templates/`:
 
-(it only works in this folder btw)
+(the macro only works in the `/client/templates` folder btw)
 
 ```haxe
 package templates;
@@ -241,7 +241,7 @@ BIG advantage is:
 - add more sanity to the template html and js (don't worry you still can fuck everything up!)
 
 
-#TODOS
+# TODOS
 Some ideas for macros and utilities that may improve the haxe-meteor workflow in the future:
 
 * **Typed Collections** like in [haxe-mongoose externs](https://github.com/clemos/haxe-js-kit/blob/master/test/MongooseTest.hx).
