@@ -34,6 +34,8 @@ class AutomaticTemplate {
 			{
 				// ignore invisible (OSX) files like ".DS_Store"
 				if (fileName.startsWith(".")) continue;
+				// make sure its a .hx file
+				if (!fileName.endsWith(".hx")) return;
 
 				var cleanFileName = fileName.toLowerCase().split('.')[0];
 				var templateFile = folder.replace('src','www') + '/' + cleanFileName + '.html';
@@ -69,7 +71,7 @@ It\'s the template for "${"src" + folder.split('src')[1] + "/" + fileName}"
 				// [mck] only if it doesn't exist, generate a template
 				if(!FileSystem.exists(templateFile)){
 					if(!FileSystem.exists(tempTemplateFile)){
-						trace('Created new template: "$tempTemplateFile"');
+						Sys.println('Created new template: "$tempTemplateFile"');
 						File.saveContent(tempTemplateFile, html);
 					}
 				}
