@@ -122,7 +122,7 @@ extern class Accounts {
 	static function verifyEmail(token:String, ?callback:EitherType<Void->Void, Error->Dynamic>):Void;
 	static function findUserByUsername(username:String):Dynamic;
 	static function findUserByEmail(email:String):Dynamic;
-	static function changePassword(oldPassword:String, newPassword:String, ?callback:EitherType<Void->Void, Error->Dynamic>):Void;
+	static function changePassword(oldPassword:String, newPassword:String, ?callback:EitherType<Void->Void, Error->Void>):Void;
 	static function forgotPassword(email:EitherType<String,{}>, ?callback:EitherType<Void->Void, Error->Void>):Void;
 	static function resetPassword(token:String, newPassword:String, ?callback:EitherType<Void->Void, Error->Dynamic>):Void;
 	static function setPassword(userId:String, newPassword:String, ?options:{logout:Bool}):Void;
