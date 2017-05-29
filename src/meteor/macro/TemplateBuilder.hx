@@ -41,7 +41,7 @@ class Helper {
 class TemplateBuilder {
 
 	private static var WARNING : String = '<!--
-This html template file is generated on ${Date.now()} with hxmeteor IMeteorComponent macro.
+This html template file is generated with hxmeteor IMeteorComponent macro.
 
 - Resistance is futile
 - Remove this file and next time Haxe Compiler builds, it will be back
@@ -87,6 +87,15 @@ This html template file is generated on ${Date.now()} with hxmeteor IMeteorCompo
 		return "";
 	}
 
+	inline static inline function getAnnotation(name) {
+		var meta = Context.getLocalClass().get().meta.get().toMap();
+		if (meta.exists(name)) {
+			return meta.get(name);
+		} else {
+			return null;
+		}
+	}
+
 	/**
 	 *  [Description]
 	 *  @return Array<Field>
@@ -97,6 +106,17 @@ This html template file is generated on ${Date.now()} with hxmeteor IMeteorCompo
 
 		var cls = Context.getLocalClass().get();
 	    var meta = cls.meta.get().toMap();
+
+trace (cls+'\n\n');
+
+
+		var fileName:String = null;
+		if (getAnnotation(':fileName') != null) {
+			fileName = getAnnotation(':fileName')[0][0].toString().replace("'","").replace('"',''); // remove quotes
+		} else {
+			fileName = cls.name.toLowerCase();
+		}
+
 
 	    // trace(meta);
 		// trace(cls);
@@ -115,7 +135,7 @@ This html template file is generated on ${Date.now()} with hxmeteor IMeteorCompo
 		var arr = ['www', 'client'];
 		for ( i in cls.pack )arr.push(i);
 		var temp = arr.copy();
-		arr.push('${cls.name.toLowerCase()}.html');
+		arr.push('${fileName}.html');
 		temp.push('_${cls.name.toLowerCase()}.html');
 
 		var templatePath : String = Path.join(arr);

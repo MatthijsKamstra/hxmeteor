@@ -89,6 +89,8 @@ extern class Meteor {
 	static function loginWithWeibo(opts:ExternalLoginOpts, callback:EitherType<Void->Void, Error->Void>):Void;
 	static function loginWithMeetup(opts:ExternalLoginOpts, callback:EitherType<Void->Void, Error->Void>):Void;
 
+	// static var http:Http;
+
 }
 /**
  *  Meteor `this` keyword has a different context and properties,

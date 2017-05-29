@@ -1,7 +1,7 @@
-package templates;
+package templates.component;
 
-@:templateFile('templates/assets/counter.html')
-@:cssFile('templates/assets/counter.css')
+@:templateFile('templates/component/assets/counter.html')
+@:cssFile('templates/component/assets/counter.css')
 @:template('
 	<tempate name="test">
 		<h1 class="title">test</h1>
@@ -20,6 +20,11 @@ class ComponentTest implements meteor.IMeteorComponent{
 
 	public function init()
 	{
-		// your code
+		trace(template);
+	}
+
+	public function template():String
+	{
+		return '<template>test</temlate>';
 	}
 }

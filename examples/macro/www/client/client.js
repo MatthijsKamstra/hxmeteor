@@ -19,8 +19,14 @@ Client.main = function() {
 	templates_Home.init();
 	templates_PageTwo.init();
 	templates_PageOne.init();
-	new templates_ComponentTest().init();
 	templates_admin_Login.init();
+	new templates_component_Css().init();
+	new templates_component_CssTemplate().init();
+	new templates_component_Html().init();
+	new templates_component_HtmlTemplate().init();
+	new templates_component_Combine().init();
+	new templates_component_ComponentTest().init();
+	new templates_component_Inline().init();
 	console.log("main");
 };
 var Shared = function() { };
@@ -28,13 +34,6 @@ Shared.init = function() {
 	AppRouter.init();
 };
 var meteor_IMeteorComponent = function() { };
-var templates_ComponentTest = function() {
-};
-templates_ComponentTest.__interfaces__ = [meteor_IMeteorComponent];
-templates_ComponentTest.prototype = {
-	init: function() {
-	}
-};
 var templates_Home = function() { };
 templates_Home.init = function() {
 	var _template = Template["home"];
@@ -91,6 +90,65 @@ templates_admin_Login.init = function() {
 		console.log("click 'Login'");
 	}});
 };
+var templates_component_Combine = function() {
+};
+templates_component_Combine.__interfaces__ = [meteor_IMeteorComponent];
+templates_component_Combine.prototype = {
+	init: function() {
+	}
+};
+var templates_component_ComponentTest = function() {
+};
+templates_component_ComponentTest.__interfaces__ = [meteor_IMeteorComponent];
+templates_component_ComponentTest.prototype = {
+	init: function() {
+		console.log($bind(this,this.template));
+	}
+	,template: function() {
+		return "<template>test</temlate>";
+	}
+};
+var templates_component_Css = function() {
+};
+templates_component_Css.__interfaces__ = [meteor_IMeteorComponent];
+templates_component_Css.prototype = {
+	init: function() {
+	}
+};
+var templates_component_CssTemplate = function() {
+};
+templates_component_CssTemplate.__interfaces__ = [meteor_IMeteorComponent];
+templates_component_CssTemplate.prototype = {
+	init: function() {
+	}
+};
+var templates_component_Html = function() {
+};
+templates_component_Html.__interfaces__ = [meteor_IMeteorComponent];
+templates_component_Html.prototype = {
+	init: function() {
+	}
+};
+var templates_component_HtmlTemplate = function() {
+};
+templates_component_HtmlTemplate.__interfaces__ = [meteor_IMeteorComponent];
+templates_component_HtmlTemplate.prototype = {
+	init: function() {
+	}
+};
+var templates_component_Inline = function() {
+};
+templates_component_Inline.__interfaces__ = [meteor_IMeteorComponent];
+templates_component_Inline.prototype = {
+	init: function() {
+		console.log($bind(this,this.template));
+	}
+	,template: function() {
+		return "<template>test</temlate>";
+	}
+};
+var $_, $fid = 0;
+function $bind(o,m) { if( m == null ) return null; if( m.__id__ == null ) m.__id__ = $fid++; var f; if( o.hx__closures__ == null ) o.hx__closures__ = {}; else f = o.hx__closures__[m.__id__]; if( f == null ) { f = function(){ return f.method.apply(f.scope, arguments); }; f.scope = o; f.method = m; o.hx__closures__[m.__id__] = f; } return f; }
 Client.main();
 })();
 

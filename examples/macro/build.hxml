@@ -1,4 +1,5 @@
 -lib hxmeteor
+-lib hx-html
 -cp src/shared
 
 -resource src/assets/test.mtt@test-template

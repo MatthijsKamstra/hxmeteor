@@ -18,7 +18,8 @@ typedef RouterConfigs = {
 	?template:String,
 	?controller:Dynamic,
 	?waitOn:Dynamic,
-	?trackPageView:Bool, // only with iron-router-ga
+	?trackPageView:Bool, // only with iron-router-ga,
+	?notFoundTemplate: String
 }
 
 typedef RouteOptions = {

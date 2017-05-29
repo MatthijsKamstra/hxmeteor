@@ -1,16 +1,81 @@
 
 # template
 
-https://github.com/skial/fe
-https://github.com/MarcWeber/haxe-macro-html-templates
-https://github.com/benmerckx/ithril
-https://github.com/fponticelli/doom
-https://github.com/skial/fe
-https://github.com/MarcWeber/haxe-html
+- <https://github.com/skial/fe> (Create Html from a small subset of Haxe that resembles CSS selectors.)
+- <https://github.com/MarcWeber/haxe-macro-html-templates> (haml style macro)
+- <https://github.com/benmerckx/ithril> (strange syntax)
+- <https://github.com/ciscoheat/mithril-hx> (closer to what I want)
+- <https://github.com/fponticelli/doom>
+- <https://github.com/MarcWeber/haxe-html> (parser?)
+
+
+# Template engine
+
+Output
+
+```html
+<template name="pageone">
+  <div class="container">
+    <h1>PAGEONE</h1>
+    <p>template for PageOne.hx</p>
+    <p>test: {{test}}</p>
+    <button class="testBtn">click</button>
+  </div>
+</template>
+
+```
+
+
+What would I prefer
+
+```haxe
+template(["name"=>"pageone"],[
+  div(["class"=>'container'],[
+    h1("PAGEONE")
+    p("template for PageOne.hx")
+    p("test: {{test}}")
+    button(["class"=>"testBtn","text"=>"click"])
+  ])
+]);
+```
+**PRO**
+
+- not every attribute needs to be defined
+
+**CON**:
+
+- autocompletion not working
+- nesting
+- no validation in elements (```<button foo="kaas"></button>```)
+
+or
+
+```haxe
+template({name:"pageone"},[
+  div({class:'container'},[
+    h1("PAGEONE")
+    p("template for PageOne.hx")
+    p("test: {{test}}")
+    button({class:"testBtn",text:"click"})
+  ])
+]);
+```
+
+**PRO**:
+
+- validation
+- autocompletion
+- not every attribute needs to be defined {"foo":"bar"}
+
+**CON**
+
+- nesting
+
+or
 
 
 
-
+# html validator?
 
 ```
 Meteor server restarted
